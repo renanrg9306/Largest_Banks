@@ -6,7 +6,7 @@ import sqlite3
 
 
 def log_progress(message):
-    timeformat = '%Y-%h-%d-%H: %M: %S'
+    timeformat = '%Y-%h-%d-%H: %M: %S' 
     now = datetime.now()
     timestamp = now.strftime(timeformat)
     with open('code_log.txt','a') as f:
@@ -24,13 +24,7 @@ def extract(url,table_attribs):
         for child_tag in td_tag.find_all('button'):
             child_tag.decompose()
     target_table.prettify()
-
-    for header in target_table.find_all('tr'):
-        header_row = []
-        for cellheader in header.find_all('th'):
-            header_row.append(cellheader.get_text(strip=True))
-        table_headers.append(header_row)
-    table_headers = list(filter(None,table_headers))
+    table_headers = ['Rank', 'Bank', 'MC_US_Billion']
   
     for row in target_table.find_all('tr'):
         data_row = []
@@ -39,7 +33,6 @@ def extract(url,table_attribs):
         table_data.append(data_row)
     table_data = list(filter(None,table_data))
     df = pd.DataFrame(table_data,columns=table_headers)
-    print(df)
     return df
 
 def transform(df, csv_path):
@@ -48,10 +41,11 @@ def transform(df, csv_path):
     eur = rates[0]
     gbp = rates[1]
     inr = rates[2]
-    df['MC_EUR_Billion'] = round(df['Market cap(US$ billion)'].astype(float) * eur,2)
-    df['MC_GBP_Billion'] = round(df['Market cap(US$ billion)'].astype(float) * gbp,2)
-    df['MC_INR_Billion'] = round(df['Market cap(US$ billion)'].astype(float)* inr,2)
+    df['MC_EUR_Billion'] = round(df['MC_US_Billion'].astype(float) * eur,2)
+    df['MC_GBP_Billion'] = round(df['MC_US_Billion'].astype(float) * gbp,2)
+    df['MC_INR_Billion'] = round(df['MC_US_Billion'].astype(float)* inr,2)
     return df
+
      
 def load_to_csv(df,output_path):
     df.to_csv(output_path + 'Largest_banks_data.csv')
@@ -64,9 +58,11 @@ log_progress('ELT Process started')
 
 log_progress('Extracting Data')
 df = extract('https://web.archive.org/web/20230908091635%20/https://en.wikipedia.org/wiki/List_of_largest_banks','wikitable')
+print(df)
 
 log_progress('Transforming Data')
 dataframe = transform(df,'./exchange_rate.csv')
+print(dataframe)
 
 log_progress('Saving file with new data')
 load_to_csv(dataframe,'./')
@@ -84,8 +80,14 @@ def run_queries(statement,conn):
 
     for row in result:
         print(row)
-    
+log_progress("Prepearing Queries")
+print('SELECT * FROM Largest_banks')
 run_queries('SELECT * FROM Largest_banks',connection)
-run_queries('SELECT AVG(MC_GBP_Billion) FROM Largest_banks',connection)
-run_queries('SELECT Name from Largest_banks LIMIT 5',connection)
+print('\n')
+print("SELECT AVG(MC_GBP_Billion) FROM Largest_banks")
+run_queries("SELECT AVG(MC_GBP_Billion) FROM Largest_banks",connection)
+print('\n')
+print('SELECT Bank from Largest_banks LIMIT 5')
+run_queries('SELECT Bank from Largest_banks LIMIT 5',connection)
 connection.close()
+log_progress("Closing Connection")

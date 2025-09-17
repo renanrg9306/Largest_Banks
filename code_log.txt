@@ -1,0 +1,40 @@
+2025-Sep-16-18: 13: 20 ELT Process started
+2025-Sep-16-18: 13: 20 Extracting Data
+2025-Sep-16-18: 13: 21 Transforming Data
+2025-Sep-16-18: 13: 21 Saving file with new data
+2025-Sep-16-18: 13: 21 Connecting to the database
+2025-Sep-16-18: 13: 21 Loading data to the database table
+2025-Sep-16-18: 15: 09 ELT Process started
+2025-Sep-16-18: 15: 09 Extracting Data
+2025-Sep-16-18: 15: 09 Transforming Data
+2025-Sep-16-18: 15: 09 Saving file with new data
+2025-Sep-16-18: 15: 09 Connecting to the database
+2025-Sep-16-18: 15: 09 Loading data to the database table
+2025-Sep-16-18: 47: 42 ELT Process started
+2025-Sep-16-18: 47: 42 Extracting Data
+2025-Sep-16-18: 47: 43 Transforming Data
+2025-Sep-16-18: 47: 43 Saving file with new data
+2025-Sep-16-18: 47: 43 Connecting to the database
+2025-Sep-16-18: 47: 43 Loading data to the database table
+2025-Sep-16-18: 59: 29 ELT Process started
+2025-Sep-16-18: 59: 29 Extracting Data
+2025-Sep-16-18: 59: 41 Transforming Data
+2025-Sep-16-18: 59: 41 Saving file with new data
+2025-Sep-16-18: 59: 41 Connecting to the database
+2025-Sep-16-18: 59: 41 Loading data to the database table
+2025-Sep-16-18: 59: 41 Prepearing Queries
+2025-Sep-16-19: 12: 24 ELT Process started
+2025-Sep-16-19: 12: 24 Extracting Data
+2025-Sep-16-19: 12: 25 Transforming Data
+2025-Sep-16-19: 12: 25 Saving file with new data
+2025-Sep-16-19: 12: 25 Connecting to the database
+2025-Sep-16-19: 12: 25 Loading data to the database table
+2025-Sep-16-19: 12: 25 Prepearing Queries
+2025-Sep-16-19: 25: 02 ELT Process started
+2025-Sep-16-19: 25: 02 Extracting Data
+2025-Sep-16-19: 25: 03 Transforming Data
+2025-Sep-16-19: 25: 03 Saving file with new data
+2025-Sep-16-19: 25: 03 Connecting to the database
+2025-Sep-16-19: 25: 03 Loading data to the database table
+2025-Sep-16-19: 25: 03 Prepearing Queries
+2025-Sep-16-19: 25: 03 Closing Connection
